@@ -21,6 +21,12 @@ struct ScratchCardPathMaskView: View {
             RoundedRectangle(cornerRadius: 20)
                 .fill(.yellow)
                 .frame(width: 250, height: 250)
+                .overlay {
+                    Image("money-bag", bundle: nil)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 100)
+                }
                 .mask(
                     Path { path in
                         path.addLines(points)
