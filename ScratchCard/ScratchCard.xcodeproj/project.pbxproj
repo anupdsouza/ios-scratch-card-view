@@ -11,6 +11,7 @@
 		E43183232AF9079900736A5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E43183222AF9079900736A5D /* Assets.xcassets */; };
 		E43183262AF9079900736A5D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E43183252AF9079900736A5D /* Preview Assets.xcassets */; };
 		E4C5B2902B05BDB200A0DED9 /* ScratchCardCanvasMaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C5B28F2B05BDB200A0DED9 /* ScratchCardCanvasMaskView.swift */; };
+		E4C5B2942B05D97600A0DED9 /* ScratchCardPathMaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C5B2932B05D97600A0DED9 /* ScratchCardPathMaskView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		E43183222AF9079900736A5D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E43183252AF9079900736A5D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E4C5B28F2B05BDB200A0DED9 /* ScratchCardCanvasMaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScratchCardCanvasMaskView.swift; sourceTree = "<group>"; };
+		E4C5B2932B05D97600A0DED9 /* ScratchCardPathMaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScratchCardPathMaskView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				E431831E2AF9079600736A5D /* ScratchCardApp.swift */,
 				E4C5B28F2B05BDB200A0DED9 /* ScratchCardCanvasMaskView.swift */,
+				E4C5B2932B05D97600A0DED9 /* ScratchCardPathMaskView.swift */,
 				E43183222AF9079900736A5D /* Assets.xcassets */,
 				E43183242AF9079900736A5D /* Preview Content */,
 			);
@@ -139,6 +142,7 @@
 			files = (
 				E4C5B2902B05BDB200A0DED9 /* ScratchCardCanvasMaskView.swift in Sources */,
 				E431831F2AF9079600736A5D /* ScratchCardApp.swift in Sources */,
+				E4C5B2942B05D97600A0DED9 /* ScratchCardPathMaskView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
