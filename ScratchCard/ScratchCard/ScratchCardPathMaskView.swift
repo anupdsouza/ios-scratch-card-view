@@ -24,7 +24,6 @@ struct ScratchCardPathMaskView: View {
                 .mask(
                     Path { path in
                         path.addLines(points)
-                        print(points)
                     }.stroke(style: StrokeStyle(lineWidth: 50, lineCap: .round, lineJoin: .round))
                 )
                 .gesture(
