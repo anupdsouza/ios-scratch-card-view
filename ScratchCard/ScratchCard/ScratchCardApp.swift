@@ -11,7 +11,7 @@ import SwiftUI
 struct ScratchCardApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ScratchCardCanvasView()
         }
     }
 }
