@@ -12,7 +12,7 @@ struct Line {
     var lineWidth: Double = 50.0
 }
 
-struct ScratchCardCanvasView: View {
+struct ScratchCardCanvasMaskView: View {
     @State private var currentLine = Line()
     @State private var lines = [Line]()
     
@@ -55,6 +55,6 @@ struct ScratchCardCanvasView: View {
 
 struct ScratchCardView_Previews: PreviewProvider {
     static var previews: some View {
-        ScratchCardCanvasView()
+        ScratchCardCanvasMaskView()
     }
 }

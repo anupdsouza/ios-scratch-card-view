@@ -10,7 +10,7 @@
 		E431831F2AF9079600736A5D /* ScratchCardApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E431831E2AF9079600736A5D /* ScratchCardApp.swift */; };
 		E43183232AF9079900736A5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E43183222AF9079900736A5D /* Assets.xcassets */; };
 		E43183262AF9079900736A5D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E43183252AF9079900736A5D /* Preview Assets.xcassets */; };
-		E4C5B2902B05BDB200A0DED9 /* ScratchCardCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C5B28F2B05BDB200A0DED9 /* ScratchCardCanvasView.swift */; };
+		E4C5B2902B05BDB200A0DED9 /* ScratchCardCanvasMaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C5B28F2B05BDB200A0DED9 /* ScratchCardCanvasMaskView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -18,7 +18,7 @@
 		E431831E2AF9079600736A5D /* ScratchCardApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScratchCardApp.swift; sourceTree = "<group>"; };
 		E43183222AF9079900736A5D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E43183252AF9079900736A5D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		E4C5B28F2B05BDB200A0DED9 /* ScratchCardCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScratchCardCanvasView.swift; sourceTree = "<group>"; };
+		E4C5B28F2B05BDB200A0DED9 /* ScratchCardCanvasMaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScratchCardCanvasMaskView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,7 +52,7 @@
 			isa = PBXGroup;
 			children = (
 				E431831E2AF9079600736A5D /* ScratchCardApp.swift */,
-				E4C5B28F2B05BDB200A0DED9 /* ScratchCardCanvasView.swift */,
+				E4C5B28F2B05BDB200A0DED9 /* ScratchCardCanvasMaskView.swift */,
 				E43183222AF9079900736A5D /* Assets.xcassets */,
 				E43183242AF9079900736A5D /* Preview Content */,
 			);
@@ -137,7 +137,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E4C5B2902B05BDB200A0DED9 /* ScratchCardCanvasView.swift in Sources */,
+				E4C5B2902B05BDB200A0DED9 /* ScratchCardCanvasMaskView.swift in Sources */,
 				E431831F2AF9079600736A5D /* ScratchCardApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
