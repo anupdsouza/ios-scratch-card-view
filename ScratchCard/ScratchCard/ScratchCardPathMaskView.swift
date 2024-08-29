@@ -23,11 +23,6 @@ struct ScratchCardPathMaskView: View {
                 .frame(width: 250)
 
             ZStack {
-                Image("pokemon-logo")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 250)
-
                 // MARK: Scratchable overlay view
                 RoundedRectangle(cornerRadius: 20)
                     .fill(.red)
