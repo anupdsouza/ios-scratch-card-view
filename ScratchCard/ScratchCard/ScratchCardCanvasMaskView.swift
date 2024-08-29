@@ -58,8 +58,6 @@ struct ScratchCardCanvasMaskView: View {
     }
 }
 
-struct ScratchCardView_Previews: PreviewProvider {
-    static var previews: some View {
-        ScratchCardCanvasMaskView()
-    }
+#Preview {
+    ScratchCardCanvasMaskView()
 }

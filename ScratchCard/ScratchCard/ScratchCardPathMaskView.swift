@@ -66,8 +66,6 @@ struct ScratchCardPathMaskView: View {
     }
 }
 
-struct ScratchCardShapeMaskView_Previews: PreviewProvider {
-    static var previews: some View {
-        ScratchCardPathMaskView()
-    }
+#Preview {
+    ScratchCardPathMaskView()
 }
