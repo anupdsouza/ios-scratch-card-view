@@ -90,6 +90,8 @@ struct ScratchCardPathMaskView: View {
                             DragGesture(minimumDistance: 0, coordinateSpace: .local)
                                 .onChanged({ value in
                                     points.append(value.location)
+                                    let feedbackGen = UIImpactFeedbackGenerator(style: .light)
+                                    feedbackGen.impactOccurred()
                                 })
                         )
                         .opacity(clearScratchArea ? 0 : 1)
