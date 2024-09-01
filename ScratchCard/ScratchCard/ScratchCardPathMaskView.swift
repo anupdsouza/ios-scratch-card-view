@@ -43,12 +43,12 @@ struct ScratchCardPathMaskView: View {
                             .scaledToFit()
                             .frame(width: 150)
                     }
-                    .opacity(clearScratchArea ? 0 : 1)
                     .animation(.easeInOut, value: clearScratchArea)
                     .shimmer(shine: $topViewShine)
                     .clipShape(RoundedRectangle(cornerRadius: 20))
                     .compositingGroup()
                     .shadow(color: .black, radius: 2)
+                    .opacity(clearScratchArea ? 0 : 1)
                     .onAppear(perform: {
                         topViewShine.toggle()
                     })
@@ -56,13 +56,14 @@ struct ScratchCardPathMaskView: View {
                     RoundedRectangle(cornerRadius: 20)
                         .fill(pokemon[selection]["color"] as? Color ?? .yellow)
                         .frame(width: 250, height: 250)
-                        .shadow(color: .black, radius: 2)
                         .overlay {
                             Image(pokemon[selection]["name"] as? String ?? "pikachu-3d")
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 200)
                         }
+                        .compositingGroup()
+                        .shadow(color: .black, radius: 2)
                         .opacity(clearScratchArea ? 1 : 0)
 
                     // MARK: Hidden REVEAL view
