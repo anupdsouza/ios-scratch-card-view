@@ -94,6 +94,53 @@ struct ScratchCardPathMaskView: View {
                                         topViewShine.toggle()
                                     }
                                 })
+                                .onEnded({ _ in
+                                    // Create the CGPath from the drawn points
+                                    let cgpath = Path { path in
+                                        path.addLines(points)
+                                    }.cgPath
+                                    
+                                    // Create a stroked version of the path to represent the thickness of the scratch
+                                    let contourPath = cgpath.copy(strokingWithWidth: 50, lineCap: .round, lineJoin: .round, miterLimit: 10)
+                                    
+                                    // Define the bounding box of the scratchable area
+                                    let boundingRect = CGRect(x: 0, y: 0, width: 250, height: 250)
+                                    
+                                    // Create a bitmap context to count the number of pixels covered by the path
+                                    let context = CGContext(data: nil, width: Int(boundingRect.width), height: Int(boundingRect.height), bitsPerComponent: 8, bytesPerRow: 0, space: CGColorSpaceCreateDeviceGray(), bitmapInfo: CGImageAlphaInfo.none.rawValue)!
+                                    
+                                    // Set the fill color (white) to the context
+                                    context.setFillColor(UIColor.white.cgColor)
+                                    
+                                    // Add the stroked path to the context
+                                    context.addPath(contourPath)
+                                    
+                                    // Fill the path in the context
+                                    context.fillPath()
+                                    
+                                    // Get the pixel data from the context
+                                    let pixelData = context.data!
+                                    let data = pixelData.bindMemory(to: UInt8.self, capacity: Int(boundingRect.width * boundingRect.height))
+                                    
+                                    // Count the number of pixels that are filled (non-zero)
+                                    var filledPixels = 0
+                                    for i in 0..<Int(boundingRect.width * boundingRect.height) {
+                                        if data[i] > 0 {
+                                            filledPixels += 1
+                                        }
+                                    }
+                                    
+                                    // Calculate the percentage of the area that is scratched
+                                    let totalPixels = Int(boundingRect.width * boundingRect.height)
+                                    let percentage = Double(filledPixels) / Double(totalPixels)
+                                    
+                                    // Check if the percentage exceeds the threshold
+                                    if percentage > scratchClearAmount {
+                                        clearScratchArea = true
+                                        // TODO: Start motion updates after a delay
+                                    }
+                                })
+
                         )
             }
             
