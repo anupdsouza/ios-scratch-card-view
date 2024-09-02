@@ -18,6 +18,8 @@ struct ScratchCardPathMaskView: View {
     @State private var topViewShine = true
     @State private var topViewShouldShine = false
     @State private var clearScratchArea = false
+    private let gridSize = 5
+    private let gridCellSize = 50
 
     private let scratchClearAmount: CGFloat = 0.5
     private let pokemon: [[String: Any]] = [
@@ -94,53 +96,35 @@ struct ScratchCardPathMaskView: View {
                                         topViewShine.toggle()
                                     }
                                 })
-                                .onEnded({ _ in
-                                    // Create the CGPath from the drawn points
+                                .onEnded { _ in
+                                    // Create a CGPath from the drawn points
                                     let cgpath = Path { path in
                                         path.addLines(points)
                                     }.cgPath
                                     
-                                    // Create a stroked version of the path to represent the thickness of the scratch
-                                    let contourPath = cgpath.copy(strokingWithWidth: 50, lineCap: .round, lineJoin: .round, miterLimit: 10)
+                                    // Thicken the path to match the stroke width
+                                    let thickenedPath = cgpath.copy(strokingWithWidth: 50, lineCap: .round, lineJoin: .round, miterLimit: 10)
                                     
-                                    // Define the bounding box of the scratchable area
-                                    let boundingRect = CGRect(x: 0, y: 0, width: 250, height: 250)
+                                    var scratchedCount = 0
                                     
-                                    // Create a bitmap context to count the number of pixels covered by the path
-                                    let context = CGContext(data: nil, width: Int(boundingRect.width), height: Int(boundingRect.height), bitsPerComponent: 8, bytesPerRow: 0, space: CGColorSpaceCreateDeviceGray(), bitmapInfo: CGImageAlphaInfo.none.rawValue)!
-                                    
-                                    // Set the fill color (white) to the context
-                                    context.setFillColor(UIColor.white.cgColor)
-                                    
-                                    // Add the stroked path to the context
-                                    context.addPath(contourPath)
-                                    
-                                    // Fill the path in the context
-                                    context.fillPath()
-                                    
-                                    // Get the pixel data from the context
-                                    let pixelData = context.data!
-                                    let data = pixelData.bindMemory(to: UInt8.self, capacity: Int(boundingRect.width * boundingRect.height))
-                                    
-                                    // Count the number of pixels that are filled (non-zero)
-                                    var filledPixels = 0
-                                    for i in 0..<Int(boundingRect.width * boundingRect.height) {
-                                        if data[i] > 0 {
-                                            filledPixels += 1
+                                    // Check if each grid cell's center point is within the thickened path
+                                    for i in 0..<gridSize {
+                                        for j in 0..<gridSize {
+                                            let point = CGPoint(x: gridCellSize / 2 + i * gridCellSize, y: gridCellSize / 2 + j * gridCellSize)
+                                            if thickenedPath.contains(point) {
+                                                scratchedCount += 1
+                                            }
                                         }
                                     }
                                     
-                                    // Calculate the percentage of the area that is scratched
-                                    let totalPixels = Int(boundingRect.width * boundingRect.height)
-                                    let percentage = Double(filledPixels) / Double(totalPixels)
+                                    // Calculate the percentage of scratched cells
+                                    let scratchedPercentage = Double(scratchedCount) / Double(gridSize * gridSize)
                                     
-                                    // Check if the percentage exceeds the threshold
-                                    if percentage > scratchClearAmount {
+                                    // If scratched area exceeds the threshold, clear the top view
+                                    if scratchedPercentage > scratchClearAmount {
                                         clearScratchArea = true
-                                        // TODO: Start motion updates after a delay
                                     }
-                                })
-
+                                }
                         )
             }
             
