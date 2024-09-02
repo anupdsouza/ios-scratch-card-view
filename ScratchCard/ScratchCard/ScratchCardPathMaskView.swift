@@ -16,6 +16,7 @@ struct ScratchCardPathMaskView: View {
     @State private var points = [CGPoint]()
     @State private var selection: Int = 0
     @State private var topViewShine = true
+    @State private var topViewShouldShine = false
     @State private var clearScratchArea = false
 
     private let scratchClearAmount: CGFloat = 0.5
@@ -44,11 +45,12 @@ struct ScratchCardPathMaskView: View {
                             .frame(width: 150)
                     }
                     .animation(.easeInOut, value: clearScratchArea)
-                    .shimmer(shine: $topViewShine)
+                    .shimmer(shine: $topViewShine, stopShine: $topViewShouldShine)
                     .clipShape(RoundedRectangle(cornerRadius: 20))
                     .compositingGroup()
                     .shadow(color: .black, radius: 2)
                     .opacity(clearScratchArea ? 0 : 1)
+                    .id(topViewShouldShine)
                     .onAppear(perform: {
                         topViewShine.toggle()
                     })
@@ -87,6 +89,10 @@ struct ScratchCardPathMaskView: View {
                                     points.append(value.location)
                                     let feedbackGen = UIImpactFeedbackGenerator(style: .light)
                                     feedbackGen.impactOccurred()
+                                    if !topViewShouldShine {
+                                        topViewShouldShine.toggle()
+                                        topViewShine.toggle()
+                                    }
                                 })
                         )
                         .opacity(clearScratchArea ? 0 : 1)
@@ -110,6 +116,10 @@ struct ScratchCardPathMaskView: View {
         .onChange(of: selection, perform: { value in
             points = []
             clearScratchArea = false
+            topViewShouldShine.toggle()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                topViewShine.toggle()
+            }
         })
     }
 }
@@ -123,6 +133,7 @@ struct ShimmerModifier: ViewModifier {
     var duration: Double
     
     @Binding var shine: Bool
+    @Binding var stopShine: Bool
     
     func body(content: Content) -> some View {
         content
@@ -132,18 +143,18 @@ struct ShimmerModifier: ViewModifier {
                     .offset(x: shine ? -250 : 250)
                     .rotationEffect(.degrees(-45))
                     .scaleEffect(2)
-                    .animation(
+                    .animation(stopShine ? .none :
                         repeatCount != nil ?
                             .linear(duration: duration).repeatCount(repeatCount!, autoreverses: false) :
                                 .linear(duration: duration).repeatForever(autoreverses: false),
-                        value: shine
+                        value: stopShine ? false : shine
                     )
             )
     }
 }
 
 extension View {
-    func shimmer(repeatCount: Int? = nil, duration: Double = 3.0, shine: Binding<Bool>) -> some View {
-        self.modifier(ShimmerModifier(repeatCount: repeatCount, duration: duration, shine: shine))
+    func shimmer(repeatCount: Int? = nil, duration: Double = 3.0, shine: Binding<Bool>, stopShine: Binding<Bool>) -> some View {
+        self.modifier(ShimmerModifier(repeatCount: repeatCount, duration: duration, shine: shine, stopShine: stopShine))
     }
 }
