@@ -95,7 +95,6 @@ struct ScratchCardPathMaskView: View {
                                     }
                                 })
                         )
-                        .opacity(clearScratchArea ? 0 : 1)
             }
             
             Button(action: {
