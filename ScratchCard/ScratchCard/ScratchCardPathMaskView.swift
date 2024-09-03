@@ -60,81 +60,82 @@ struct ScratchCardPathMaskView: View {
                         topViewShine.toggle()
                     })
 
-                    RoundedRectangle(cornerRadius: 20)
-                        .fill(pokemon[selection]["color"] as? Color ?? .white)
-                        .frame(width: 250, height: 250)
-                        .overlay {
-                            Image(pokemon[selection]["name"] as? String ?? "")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 200)
-                        }
-                        .compositingGroup()
-                        .shadow(color: .black, radius: 5)
-                        .opacity(clearScratchArea ? 1 : 0)
-                        .rotation3DEffect(.degrees(motionManager.x * 10), axis: (x: 0, y: 1, z: 0))
-                        .rotation3DEffect(.degrees(motionManager.y * 10), axis: (x: -1, y: 0, z: 0))
+                // MARK: Full REVEAL view
+                RoundedRectangle(cornerRadius: 20)
+                    .fill(pokemon[selection]["color"] as? Color ?? .white)
+                    .frame(width: 250, height: 250)
+                    .overlay {
+                        Image(pokemon[selection]["name"] as? String ?? "")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 200)
+                    }
+                    .compositingGroup()
+                    .shadow(color: .black, radius: 5)
+                    .opacity(clearScratchArea ? 1 : 0)
+                    .rotation3DEffect(.degrees(motionManager.x * 10), axis: (x: 0, y: 1, z: 0))
+                    .rotation3DEffect(.degrees(motionManager.y * 10), axis: (x: -1, y: 0, z: 0))
 
-                    // MARK: Hidden REVEAL view
-                    RoundedRectangle(cornerRadius: 20)
-                        .fill(pokemon[selection]["color"] as? Color ?? .white)
-                        .frame(width: 250, height: 250)
-                        .overlay {
-                            Image(pokemon[selection]["name"] as? String ?? "")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 200)
-                        }
-                        .mask(
-                            Path { path in
-                                path.addLines(points)
-                            }.stroke(style: StrokeStyle(lineWidth: 50, lineCap: .round, lineJoin: .round))
-                        )
-                        .gesture(
-                            DragGesture(minimumDistance: 0, coordinateSpace: .local)
-                                .onChanged({ value in
-                                    points.append(value.location)
-                                    let feedbackGen = UIImpactFeedbackGenerator(style: .soft)
-                                    feedbackGen.impactOccurred()
-                                    if !topViewShouldShine {
-                                        topViewShouldShine.toggle()
-                                        topViewShine.toggle()
-                                    }
-                                })
-                                .onEnded { _ in
-                                    // Create a CGPath from the drawn points
-                                    let cgpath = Path { path in
-                                        path.addLines(points)
-                                    }.cgPath
-                                    
-                                    // Thicken the path to match the stroke width
-                                    let thickenedPath = cgpath.copy(strokingWithWidth: 50, lineCap: .round, lineJoin: .round, miterLimit: 10)
-                                    
-                                    var scratchedCount = 0
-                                    
-                                    // Check if each grid cell's center point is within the thickened path
-                                    for i in 0..<gridSize {
-                                        for j in 0..<gridSize {
-                                            let point = CGPoint(x: gridCellSize / 2 + i * gridCellSize, y: gridCellSize / 2 + j * gridCellSize)
-                                            if thickenedPath.contains(point) {
-                                                scratchedCount += 1
-                                            }
+                // MARK: Partial REVEAL view
+                RoundedRectangle(cornerRadius: 20)
+                    .fill(pokemon[selection]["color"] as? Color ?? .white)
+                    .frame(width: 250, height: 250)
+                    .overlay {
+                        Image(pokemon[selection]["name"] as? String ?? "")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 200)
+                    }
+                    .mask(
+                        Path { path in
+                            path.addLines(points)
+                        }.stroke(style: StrokeStyle(lineWidth: 50, lineCap: .round, lineJoin: .round))
+                    )
+                    .gesture(
+                        DragGesture(minimumDistance: 0, coordinateSpace: .local)
+                            .onChanged({ value in
+                                points.append(value.location)
+                                let feedbackGen = UIImpactFeedbackGenerator(style: .soft)
+                                feedbackGen.impactOccurred()
+                                if !topViewShouldShine {
+                                    topViewShouldShine.toggle()
+                                    topViewShine.toggle()
+                                }
+                            })
+                            .onEnded { _ in
+                                // Create a CGPath from the drawn points
+                                let cgpath = Path { path in
+                                    path.addLines(points)
+                                }.cgPath
+                                
+                                // Thicken the path to match the stroke width
+                                let thickenedPath = cgpath.copy(strokingWithWidth: 50, lineCap: .round, lineJoin: .round, miterLimit: 10)
+                                
+                                var scratchedCount = 0
+                                
+                                // Check if each grid cell's center point is within the thickened path
+                                for i in 0..<gridSize {
+                                    for j in 0..<gridSize {
+                                        let point = CGPoint(x: gridCellSize / 2 + i * gridCellSize, y: gridCellSize / 2 + j * gridCellSize)
+                                        if thickenedPath.contains(point) {
+                                            scratchedCount += 1
                                         }
                                     }
-                                    
-                                    // Calculate the percentage of scratched cells
-                                    let scratchedPercentage = Double(scratchedCount) / Double(gridSize * gridSize)
-                                    
-                                    // If scratched area exceeds the threshold, clear the top view
-                                    if scratchedPercentage > scratchClearAmount {
-                                        clearScratchArea = true
-                                        motionManager.isActive = true
-                                    }
                                 }
-                        )
-                        .opacity(clearScratchArea ? 0 : 1)
+
+                                // Calculate the percentage of scratched cells
+                                let scratchedPercentage = Double(scratchedCount) / Double(gridSize * gridSize)
+
+                                // If scratched area exceeds the threshold, clear the top view
+                                if scratchedPercentage > scratchClearAmount {
+                                    clearScratchArea = true
+                                    motionManager.isActive = true
+                                }
+                            }
+                    )
+                    .opacity(clearScratchArea ? 0 : 1)
             }
-            
+
             Button(action: {
                 selection = (selection + 1) % pokemon.count
             }, label: {
