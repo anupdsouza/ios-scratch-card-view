@@ -61,10 +61,10 @@ struct ScratchCardPathMaskView: View {
                     })
 
                     RoundedRectangle(cornerRadius: 20)
-                        .fill(pokemon[selection]["color"] as? Color ?? .yellow)
+                        .fill(pokemon[selection]["color"] as? Color ?? .white)
                         .frame(width: 250, height: 250)
                         .overlay {
-                            Image(pokemon[selection]["name"] as? String ?? "pikachu-3d")
+                            Image(pokemon[selection]["name"] as? String ?? "")
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 200)
@@ -77,10 +77,10 @@ struct ScratchCardPathMaskView: View {
 
                     // MARK: Hidden REVEAL view
                     RoundedRectangle(cornerRadius: 20)
-                        .fill(pokemon[selection]["color"] as? Color ?? .yellow)
+                        .fill(pokemon[selection]["color"] as? Color ?? .white)
                         .frame(width: 250, height: 250)
                         .overlay {
-                            Image(pokemon[selection]["name"] as? String ?? "pikachu-3d")
+                            Image(pokemon[selection]["name"] as? String ?? "")
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 200)
@@ -94,7 +94,7 @@ struct ScratchCardPathMaskView: View {
                             DragGesture(minimumDistance: 0, coordinateSpace: .local)
                                 .onChanged({ value in
                                     points.append(value.location)
-                                    let feedbackGen = UIImpactFeedbackGenerator(style: .light)
+                                    let feedbackGen = UIImpactFeedbackGenerator(style: .soft)
                                     feedbackGen.impactOccurred()
                                     if !topViewShouldShine {
                                         topViewShouldShine.toggle()
@@ -138,7 +138,7 @@ struct ScratchCardPathMaskView: View {
             Button(action: {
                 selection = (selection + 1) % pokemon.count
             }, label: {
-                Text("Catch New")
+                Text("Catch")
                     .font(.title3)
                     .bold()
                     .foregroundStyle(.white)
