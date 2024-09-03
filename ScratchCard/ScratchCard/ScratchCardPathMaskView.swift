@@ -53,7 +53,7 @@ struct ScratchCardPathMaskView: View {
                     .shimmer(shine: $topViewShine, stopShine: $topViewShouldShine)
                     .clipShape(RoundedRectangle(cornerRadius: 20))
                     .compositingGroup()
-                    .shadow(color: .black, radius: 2)
+                    .shadow(color: .black, radius: 5)
                     .opacity(clearScratchArea ? 0 : 1)
                     .id(topViewShouldShine)
                     .onAppear(perform: {
@@ -70,8 +70,10 @@ struct ScratchCardPathMaskView: View {
                                 .frame(width: 200)
                         }
                         .compositingGroup()
-                        .shadow(color: .black, radius: 2)
+                        .shadow(color: .black, radius: 5)
                         .opacity(clearScratchArea ? 1 : 0)
+                        .rotation3DEffect(.degrees(motionManager.x * 10), axis: (x: 0, y: 1, z: 0))
+                        .rotation3DEffect(.degrees(motionManager.y * 10), axis: (x: -1, y: 0, z: 0))
 
                     // MARK: Hidden REVEAL view
                     RoundedRectangle(cornerRadius: 20)
@@ -130,12 +132,13 @@ struct ScratchCardPathMaskView: View {
                                     }
                                 }
                         )
+                        .opacity(clearScratchArea ? 0 : 1)
             }
             
             Button(action: {
                 selection = (selection + 1) % pokemon.count
             }, label: {
-                Text("Catch New !")
+                Text("Catch New")
                     .font(.title3)
                     .bold()
                     .foregroundStyle(.white)
