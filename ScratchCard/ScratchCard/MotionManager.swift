@@ -12,17 +12,23 @@
 
 import Foundation
 import CoreMotion
+import SwiftUI
 
 class MotionManager: ObservableObject {
     private let motionManager = CMMotionManager()
     @Published private(set) var x = 0.0
     @Published private(set) var y = 0.0
-    // TODO: Provide binding value for observation
-    init() {
-        
+    @Published var isActive: Bool = false {
+        didSet {
+            if isActive {
+                startMotionUpdates()
+            } else {
+                stopMotionUpdates()
+            }
+        }
     }
-    
-    func startMotionUpdates() {
+
+    private func startMotionUpdates() {
         motionManager.deviceMotionUpdateInterval = 1/15
         motionManager.startDeviceMotionUpdates(to: .main) { [weak self] data, error in
             guard let motion = data?.attitude else { return }
@@ -30,10 +36,11 @@ class MotionManager: ObservableObject {
             self?.y = motion.pitch
         }
     }
-    
-    func stopMotionUpdates() {
+
+    private func stopMotionUpdates() {
+        motionManager.stopDeviceMotionUpdates()
         x = 0
         y = 0
-        motionManager.stopDeviceMotionUpdates()
     }
 }
+

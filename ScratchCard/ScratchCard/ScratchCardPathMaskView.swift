@@ -17,7 +17,10 @@ struct ScratchCardPathMaskView: View {
     @State private var selection: Int = 0
     @State private var topViewShine = true
     @State private var topViewShouldShine = false
+    @State private var revealViewShine = true
+    @State private var revealViewShouldShine = false
     @State private var clearScratchArea = false
+    @StateObject private var motionManager = MotionManager()
     private let gridSize = 5
     private let gridCellSize = 50
 
@@ -123,6 +126,7 @@ struct ScratchCardPathMaskView: View {
                                     // If scratched area exceeds the threshold, clear the top view
                                     if scratchedPercentage > scratchClearAmount {
                                         clearScratchArea = true
+                                        motionManager.isActive = true
                                     }
                                 }
                         )
@@ -140,10 +144,18 @@ struct ScratchCardPathMaskView: View {
             })
             .buttonStyle(.borderedProminent)
             .tint(.red)
+            .overlay {
+                Capsule().stroke(Color.white, lineWidth: 5.0)
+                    .padding(3)
+                    .overlay {
+                        Capsule().stroke(Color.black, lineWidth: 5.0)
+                    }
+            }
             .clipShape(Capsule())
             .padding(.vertical, 20)
         }
         .onChange(of: selection, perform: { value in
+            motionManager.isActive = false
             points = []
             clearScratchArea = false
             topViewShouldShine.toggle()
