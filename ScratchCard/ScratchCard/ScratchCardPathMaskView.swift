@@ -17,8 +17,6 @@ struct ScratchCardPathMaskView: View {
     @State private var selection: Int = 0
     @State private var topShine = true
     @State private var enableTopShine = false
-    @State private var revealShine = true
-    @State private var enableRevealShine = false
     @State private var clearScratchArea = false
     @StateObject private var motionManager = MotionManager()
     private let gridSize = 5
