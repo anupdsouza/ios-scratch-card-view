@@ -15,10 +15,10 @@ import SwiftUI
 struct ScratchCardPathMaskView: View {
     @State private var points = [CGPoint]()
     @State private var selection: Int = 0
-    @State private var topViewShine = true
-    @State private var topViewShouldShine = false
-    @State private var revealViewShine = true
-    @State private var revealViewShouldShine = false
+    @State private var topShine = true
+    @State private var enableTopShine = false
+    @State private var revealShine = true
+    @State private var enableRevealShine = false
     @State private var clearScratchArea = false
     @StateObject private var motionManager = MotionManager()
     private let gridSize = 5
@@ -27,8 +27,8 @@ struct ScratchCardPathMaskView: View {
     private let scratchClearAmount: CGFloat = 0.5
     private let pokemon: [[String: Any]] = [
         ["name":"pikachu-3d", "color": Color.yellow],
-        ["name":"squirtle-3d", "color": Color.cyan],
-        ["name":"bulbasaur-3d", "color": Color.mint]
+        ["name":"bulbasaur-3d", "color": Color.mint],
+        ["name":"squirtle-3d", "color": Color.cyan]
     ]
     
     var body: some View {
@@ -50,14 +50,14 @@ struct ScratchCardPathMaskView: View {
                             .frame(width: 150)
                     }
                     .animation(.easeInOut, value: clearScratchArea)
-                    .shimmer(shine: $topViewShine, stopShine: $topViewShouldShine)
+                    .shimmer(shine: $topShine, stopShine: $enableTopShine)
                     .clipShape(RoundedRectangle(cornerRadius: 20))
                     .compositingGroup()
                     .shadow(color: .black, radius: 5)
                     .opacity(clearScratchArea ? 0 : 1)
-                    .id(topViewShouldShine)
+                    .id(enableTopShine)
                     .onAppear(perform: {
-                        topViewShine.toggle()
+                        topShine.toggle()
                     })
 
                 // MARK: Full REVEAL view
@@ -97,9 +97,9 @@ struct ScratchCardPathMaskView: View {
                                 points.append(value.location)
                                 let feedbackGen = UIImpactFeedbackGenerator(style: .soft)
                                 feedbackGen.impactOccurred()
-                                if !topViewShouldShine {
-                                    topViewShouldShine.toggle()
-                                    topViewShine.toggle()
+                                if !enableTopShine {
+                                    enableTopShine.toggle()
+                                    topShine.toggle()
                                 }
                             })
                             .onEnded { _ in
@@ -162,9 +162,9 @@ struct ScratchCardPathMaskView: View {
             motionManager.isActive = false
             points = []
             clearScratchArea = false
-            topViewShouldShine.toggle()
+            enableTopShine.toggle()
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                topViewShine.toggle()
+                topShine.toggle()
             }
         })
     }
