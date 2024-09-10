@@ -1,4 +1,4 @@
-# Scratch Card effect in SwiftUI ft. Haptics, Scratch Detection & Motion Tilt !
+# Scratch Card in SwiftUI ft. Shine Effect, Haptic Feedback, Scratch Detection & Motion Tilt !
 ### ⭐️   Star the repo if you found this useful 🙏🏼 
 #### Consider supporting me:
 [![Subscribe to my channel](https://img.shields.io/badge/YOUTUBE-SUBSCRIBE%20TO%20MY%20CHANNEL-gray?style=for-the-badge&logo=youtube&labelColor=red)](https://www.youtube.com/@swiftodyssey)  
