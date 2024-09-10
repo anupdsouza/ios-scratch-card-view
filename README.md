@@ -1,13 +1,17 @@
-# ios-scratch-card-view
-## Creating the Scratch Card effect in SwiftUI  
+# Scratch Card effect in SwiftUI ft. Haptics, Scratch Detection & Motion Tilt !
+### ⭐️   Star the repo if you found this useful 🙏🏼 
 #### Consider supporting me:
-🌟 Star the repo if you found this useful   
-<img width="4%" alt="youtube-logo" src="https://github.com/user-attachments/assets/c13d1493-ce12-4ca2-86f8-afad26ad4372"> Subscribe to my [YouTube Channel](https://www.youtube.com/@swiftodyssey)  
-<!--<img width="5%" alt="youtube-logo" src="https://github.com/user-attachments/assets/b2e4d8d3-badf-42b4-8f20-082bcd868846">-->
+[![Subscribe to my channel](https://img.shields.io/badge/YOUTUBE-SUBSCRIBE%20TO%20MY%20CHANNEL-gray?style=for-the-badge&logo=youtube&labelColor=red)](https://www.youtube.com/@swiftodyssey)  
+[![Follow me on X](https://img.shields.io/badge/X-FOLLOW%20ME%20ON%20X-gray?style=for-the-badge&logo=x&logoColor=white&labelColor=black)](https://x.com/swift_odyssey)  
+[![Buy Me a Coffee](https://img.shields.io/badge/buymeacoffee-gray?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black&labelColor=FFDD00)](https://www.buymeacoffee.com/adsouza)  
+[![Become a Patron](https://img.shields.io/badge/PATREON-BECOME%20A%20PATRON-gray?style=for-the-badge&logo=patreon&logoColor=white&labelColor=black)](https://patreon.com/adsouza)  
 
 
 ## Video
-https://github.com/user-attachments/assets/599bd4f6-6ef6-4e36-b0f0-bacf8ead7700
+https://github.com/user-attachments/assets/a1d3da38-40eb-4da5-bda9-389269d7da58
+
+
 ## Screenshot
-<img width="50%" alt="scratchcard" src="https://github.com/user-attachments/assets/6a6bb398-40c4-47b7-814f-1897b4469197">  
+<!--<img width="50%" alt="scratchcard" src="https://github.com/user-attachments/assets/6a6bb398-40c4-47b7-814f-1897b4469197">  -->
+<img width="50%" alt="scratchcard" src="https://github.com/user-attachments/assets/4ea9acf9-7386-44b9-bca3-f9e91f7855c5">  
 
