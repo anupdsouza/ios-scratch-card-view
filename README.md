@@ -1,11 +1,10 @@
-# Scratch Card in SwiftUI ft. Shine Effect, Haptic Feedback, Scratch Detection & Motion Tilt !
-### ⭐️   Star the repo if you found this useful 🙏🏼 
-#### Consider supporting me:
-[![Subscribe to my channel](https://img.shields.io/badge/YOUTUBE-SUBSCRIBE%20TO%20MY%20CHANNEL-gray?style=for-the-badge&logo=youtube&labelColor=red)](https://www.youtube.com/@swiftodyssey)  
-[![Follow me on X](https://img.shields.io/badge/X-FOLLOW%20ME%20ON%20X-gray?style=for-the-badge&logo=x&logoColor=white&labelColor=black)](https://x.com/swift_odyssey)  
-[![Buy Me a Coffee](https://img.shields.io/badge/buymeacoffee-gray?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black&labelColor=FFDD00)](https://www.buymeacoffee.com/adsouza)  
-[![Become a Patron](https://img.shields.io/badge/PATREON-BECOME%20A%20PATRON-gray?style=for-the-badge&logo=patreon&logoColor=white&labelColor=black)](https://patreon.com/adsouza)  
-
+# Scratch Card in SwiftUI ft. Shine Effect, Haptic Feedback, Scratch Detection & Motion Tilt
+## Consider supporting me:
+[![GitHub](https://img.shields.io/badge/⭐️%20%20%20%20%20%20STAR%20%20%20%20%20THE%20%20%20%20REPO%20%20%20%20%20%20-red?style=for-the-badge&logo=github&logoColor=white&labelColor=000000)](https://github.com/anupdsouza/ios-scratch-card-view)  
+[![YouTube](https://img.shields.io/badge/SUBSCRIBE%20TO%20MY%20CHANNEL-red?style=for-the-badge&logo=youtube&logoColor=white&labelColor=FF0000)](https://www.youtube.com/@swiftodyssey)  
+[![X](https://img.shields.io/badge/FOLLOW%20%20%20%20%20%20ME%20%20%20%20%20%20%20ON%20%20%20%20%20%20X-red?style=for-the-badge&logo=X&logoColor=white&labelColor=1DA1F2)](https://x.com/swift_odyssey)  
+[![Buy Me a Coffee](https://img.shields.io/badge/BUY%20%20%20%20%20%20ME%20%20%20%20%20%20A%20%20%20%20%20%20COFFEE%20-red?style=for-the-badge&logo=buymeacoffee&logoColor=black&labelColor=F8D248)](https://www.buymeacoffee.com/adsouza)  
+[![Patreon](https://img.shields.io/badge/BECOME%20%20%20%20%20%20%20%20A%20%20%20%20%20%20%20PATRON-red?style=for-the-badge&logo=patreon&logoColor=white&labelColor=black)](https://patreon.com/adsouza)  
 
 ## Video
 https://github.com/user-attachments/assets/a1d3da38-40eb-4da5-bda9-389269d7da58
