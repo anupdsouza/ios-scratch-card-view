@@ -1,7 +1,7 @@
 # Scratch Card in SwiftUI
 A cool scratch card with Shine Effect, Haptic Feedback, Scratch Detection & Motion Tilt made entirely in SwiftUI !
 
-Star the Repo if you found this useful: <picture><img align="center" alt="startherepo" src="https://github.com/user-attachments/assets/88e5a2e6-7f65-4caa-bce1-8400831aff68" height="50" hspace="5"></picture><br/>
+Star the Repo if you found this useful: <picture><img align="center" alt="startherepo" src="https://github.com/anupdsouza/ios-miscellaneous/blob/bf5cb23d0ffbb21afa7b442540a7682df27c3b12/starrepo.gif" height="50" hspace="5"></picture><br/>
 Support Me: <a href="https://www.buymeacoffee.com/adsouza"><img align="center" alt="buymeacoffee" src="https://github.com/user-attachments/assets/fa541855-cb91-4ea4-bafb-d0f9d56d0126" height="30" hspace="5"></a> <a href="https://www.youtube.com/@swiftodyssey"><img align="center" alt="youtube" src="https://github.com/user-attachments/assets/e5d34f8b-7081-4e64-bf0d-3a383a16b357" height="30" hspace="5"></a>
 
 ## Screenshots
